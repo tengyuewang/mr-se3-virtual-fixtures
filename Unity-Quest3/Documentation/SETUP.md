@@ -1,5 +1,9 @@
 # Setup and deployment
 
+[Unity project guide](../README.md) | [Repository overview](../../README.md)
+
+This guide applies to the `Unity-Quest3` subproject. All asset paths and build commands below are relative to that folder.
+
 ## 1. Unity and Android
 
 Install Unity 6000.3.13f1 through Unity Hub with:
@@ -8,7 +12,7 @@ Install Unity 6000.3.13f1 through Unity Hub with:
 - Android SDK and NDK Tools; and
 - OpenJDK.
 
-Open the repository root as a Unity project. The first import can take several minutes because registry and Git packages must be resolved. Keep `Packages/packages-lock.json` under version control.
+Open the repository's `Unity-Quest3` folder as a Unity project in Unity Hub. Do not select the repository root. The first import can take several minutes because registry and Git packages must be resolved. Keep `Packages/packages-lock.json` under version control.
 
 Select Android as the active build target. The checked-in scene list already contains `Assets/Scenes/SampleScene.unity`. The Android application identifier is `org.research.mrse3path`.
 

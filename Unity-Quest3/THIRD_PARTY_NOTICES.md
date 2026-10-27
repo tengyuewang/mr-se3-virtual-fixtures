@@ -1,6 +1,6 @@
 # Third-party notices
 
-This repository contains or resolves third-party software. Each component remains subject to its own license. This file is an inventory, not a replacement for the license text distributed with each package.
+This Unity project contains or resolves third-party software. Paths below are relative to `Unity-Quest3`. Each component remains subject to its own license. This file is an inventory, not a replacement for the license text distributed with each package. The license for original project code is in [../LICENSE](../LICENSE).
 
 | Component | Source in this project | License / notice location |
 | --- | --- | --- |

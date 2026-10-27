@@ -1,5 +1,9 @@
 # Architecture
 
+[Unity project guide](../README.md) | [Repository overview](../../README.md)
+
+This document describes the `Unity-Quest3` subproject. File paths are relative to that Unity project folder.
+
 ## Runtime data flow
 
 1. `PathRecorder` samples the pose of the manipulated path-generation object when either translation or rotation crosses its configured threshold.
