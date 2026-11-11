@@ -131,7 +131,7 @@ Generated folders such as `Library`, `Temp`, `Logs`, `Build`, and `UserSettings`
 
 The current Laplacian formulation operates in logarithmic coordinates relative to a fixed reference pose. As discussed in the paper, it is a local approximation rather than an intrinsic Laplacian on SE(3).
 
-Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the public scripts. Additional authoring utilities are outside the planned public release.
+Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the public scripts.
 
 The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). See the [root README](../README.md) for the repository contents.
 
