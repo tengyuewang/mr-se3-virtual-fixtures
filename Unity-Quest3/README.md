@@ -15,7 +15,7 @@ For direct headset installation, use the [prebuilt APK](https://github.com/tengy
 - QR-based alignment and visualization of the virtual robot and authored path.
 - ROS-TCP publication of fitted paths and reception of robot states.
 
-The main scene is [Assets/Scenes/SampleScene.unity](Assets/Scenes/SampleScene.unity). Robot-side VF enforcement, impedance control, and the matching ROS 2 packages are forthcoming components; see the [repository release roadmap](../README.md#release-roadmap).
+The main scene is [Assets/Scenes/SampleScene.unity](Assets/Scenes/SampleScene.unity). The public release covers the headset-side interface; robot-side VF enforcement, impedance control, and project-specific ROS 2 packages are outside its scope. See the [repository release scope](../README.md#release-scope).
 
 ## Setup and use
 
@@ -33,7 +33,7 @@ Version **1.1.0**, built November 11, 2026, is available for Meta Quest 3 (ARM64
 
 4. Launch **MR SE3 Path Interface** on the headset and grant the requested permissions.
 
-Unity Editor is not required to install the prebuilt application. See the [installation and checksum details](Documentation/SETUP.md#prebuilt-apk) and [release notes](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/tag/quest3-apk-2026-11-11). The APK contains the headset application, not the forthcoming ROS 2 packages or robot controller.
+Unity Editor is not required to install the prebuilt application. See the [installation and checksum details](Documentation/SETUP.md#prebuilt-apk) and [release notes](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/tag/quest3-apk-2026-11-11). The APK contains the Quest 3 headset application.
 
 ### Project configuration
 
@@ -70,7 +70,7 @@ Dependency versions are recorded in [Packages/manifest.json](Packages/manifest.j
    adb install -r Build/MR-SE3-Path-Interface.apk
    ```
 
-Alternatively, install the [published prebuilt APK](#install-the-prebuilt-apk). Building the Unity application does not install or start the pending ROS 2 and robot-controller components. See [Documentation/SETUP.md](Documentation/SETUP.md) for device and deployment instructions.
+Alternatively, install the [published prebuilt APK](#install-the-prebuilt-apk). See [Documentation/SETUP.md](Documentation/SETUP.md) for headset installation and Unity-side configuration. Integration with a physical robot requires independently supplied ROS and robot-control software.
 
 ### ROS connection and coordinate frames
 
@@ -78,14 +78,16 @@ The current Unity code publishes fitted paths and receives robot states through 
 
 | Direction | Topic | Message |
 | --- | --- | --- |
-| Unity to ROS | `/waypoint` | `flexiv_msgs/TrajectoryWaypoint` |
+| Unity to ROS | `/waypoint2` in the sample scene | `flexiv_msgs/TrajectoryWaypoint` |
 | ROS to Unity | `/robot_states` | `flexiv_msgs/RobotStates` |
+
+The `WaypointPublish.cs` script default is `/waypoint`; the sample scene overrides it to `/waypoint2`. Match the configured topic to your external ROS endpoint.
 
 Set the ROS host in [Assets/Resources/ROSConnectionPrefab.prefab](Assets/Resources/ROSConnectionPrefab.prefab). Its checked-in address, `192.168.0.2`, is an example and must be replaced with the reachable address of your ROS computer. The headset and ROS host must be able to communicate over TCP port `10000`.
 
 Changing this prefab affects a subsequent source build; it does not change an already downloaded APK. The prebuilt application's network configuration must match your ROS endpoint.
 
-Fitted poses are transformed from the Unity world frame to the robot-base frame and then converted to ROS FLU coordinates before publication. The default published frame ID is `rizon_base`. [Assets/RosMessages/Flexiv/msg](Assets/RosMessages/Flexiv/msg) contains the generated Unity C# message classes, not a standalone ROS 2 package. The matching ROS 2 message definitions, communication packages, and launch instructions will be provided with the ROS 2 release.
+Fitted poses are transformed from the Unity world frame to the robot-base frame and then converted to ROS FLU coordinates before publication. The default published frame ID is `rizon_base`. [Assets/RosMessages/Flexiv/msg](Assets/RosMessages/Flexiv/msg) contains the generated Unity C# message classes. To integrate with external robot software, provide compatible ROS message definitions and communication infrastructure; project-specific ROS 2 packages and robot launch instructions are outside this repository's public scope.
 
 QR-based alignment is implemented in `TrackableManager`. The current code supports `LegacyYawOffset` (the default, with fixed offsets) and `FullPose` (using a measured base-to-marker transform). The paper describes full rigid-transform registration; configure and validate the transform for your own setup rather than assuming the default offsets apply to it.
 
@@ -104,7 +106,7 @@ The checked-in scene uses the following authoring parameters. The sampling thres
 | Regularization weight, mu | 0.5 | `WaypointMarkerManager.regularizationWeight` |
 | Edit falloff width, sigma | 3 waypoint indices | `WaypointMarkerManager.falloffSigma` |
 
-The paper's robot control and VF update rates are **1000 Hz** and **100 Hz**, respectively. These belong to the forthcoming robot-side implementation and are separate from the Unity refit interval.
+The paper's robot control and VF update rates are **1000 Hz** and **100 Hz**, respectively. They describe the robot-side system and are separate from the Unity refit interval; that controller is outside this public release.
 
 ## Code guide
 
@@ -125,13 +127,13 @@ The paper's robot control and VF update rates are **1000 Hz** and **100 Hz**, re
 
 Generated folders such as `Library`, `Temp`, `Logs`, `Build`, and `UserSettings` are excluded from version control.
 
-## Scope and pending utilities
+## Scope and limitations
 
 The current Laplacian formulation operates in logarithmic coordinates relative to a fixed reference pose. As discussed in the paper, it is a local approximation rather than an intrinsic Laplacian on SE(3).
 
-Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the current public scripts and will be added with their usage instructions in a subsequent update.
+Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the public scripts. Additional authoring utilities are outside the planned public release.
 
-The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). Additional platform support, robot software, and complete system documentation remain tracked in the [root README](../README.md#release-roadmap).
+The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). See the [root README](../README.md#release-scope) for the scope of the published materials.
 
 ## Safety
 

@@ -4,9 +4,9 @@
 
 *IEEE Robotics and Automation Letters*, accepted October 25, 2026.
 
-This is the public project repository accompanying our work on mixed reality (MR)-driven generation and editing of full SE(3) virtual fixtures for physical human-robot interaction. The complete system combines MR-based motion specification, SE(3) path generation, interactive Laplacian editing, and robot-side virtual fixture enforcement through task-space impedance control.
+This is the public project repository accompanying our work on mixed reality (MR)-driven generation and editing of full SE(3) virtual fixtures for physical human-robot interaction. The paper describes a system combining MR-based motion specification, SE(3) path generation, interactive Laplacian editing, and robot-side virtual fixture enforcement through task-space impedance control.
 
-**The repository is being released incrementally.** The Meta Quest 3 Unity project, its documentation, a prebuilt Quest 3 APK, and the user-study consent form, protocol, and questionnaires are available now. Additional implementations and complete system documentation will be uploaded in subsequent updates.
+**This repository provides the Meta Quest 3 MR interface and supporting study materials:** the Unity project, its setup and architecture documentation, a prebuilt Quest 3 APK, and the user-study consent form, protocol, and questionnaires. See [Release scope](#release-scope) for the boundary of this public release.
 
 **Prebuilt Quest 3 APK:** [Download version 1.1.0](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/download/quest3-apk-2026-11-11/mr-se3-virtual-fixtures.apk) | [Release notes and SHA-256 checksum](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/tag/quest3-apk-2026-11-11)
 
@@ -29,7 +29,7 @@ mr-se3-virtual-fixtures/
     `-- THIRD_PARTY_NOTICES.md       # Third-party component notices
 ```
 
-Only currently available content is shown above. Future components will be linked here when they are uploaded.
+The folders above contain the published source, documentation, and study materials. The prebuilt APK is hosted separately under GitHub Releases.
 
 ## Available now
 
@@ -46,21 +46,15 @@ Only currently available content is shown above. Future components will be linke
 
 To install the interface directly on a headset, follow the [prebuilt APK instructions](Unity-Quest3/Documentation/SETUP.md#prebuilt-apk); Unity Editor is not required. To work with the source, follow the [Unity project README](Unity-Quest3/README.md) and **select `Unity-Quest3/` in Unity Hub**, rather than the repository root.
 
-The paper's experiments used a **Meta Quest 3** and a **7-DoF Flexiv Rizon 4** manipulator. The current release contains the headset-side implementation; it does not yet include the complete robot-side system needed to reproduce the physical experiments. Generated C# ROS message classes and robot visualization assets are included, but they are not the ROS 2 workspace or robot controller.
+The paper's experiments used a **Meta Quest 3** and a **7-DoF Flexiv Rizon 4** manipulator. This repository provides the headset-side implementation. Reproducing the physical robot experiments requires robot-side software and deployment resources outside the scope of this public release. The included generated C# ROS message classes and robot visualization assets support the Unity interface; they do not constitute a ROS 2 workspace or robot controller.
 
-## Release roadmap
+## Release scope
 
-The following materials will be added in subsequent updates. Items marked **To be added** are not currently available in this repository. No release dates have been set.
+The public release is limited to the materials listed above. The HoloLens 2 Unity project, robot-side C++ implementation, project-specific ROS 2 packages, and additional Unity authoring utilities are outside this scope and are not planned for publication in this repository.
 
-| Material | Status | Planned contents |
-| --- | --- | --- |
-| HoloLens 2 Unity project | **To be added** | An additional MR interface, including interaction, pose sampling, path generation, visualization, and editing. HoloLens 2 was not the headset used in the reported user study. |
-| Robot-side C++ implementation | **To be added** | Path deployment, virtual fixture enforcement, task-space impedance control, and the software interface for the Flexiv Rizon 4 used in the study. |
-| ROS 2 packages | **To be added** | Packages and message definitions for exchanging generated paths, control parameters, and robot states between the Unity applications and robot-side modules. |
-| Complete system documentation | **Partially available; to be extended** | Unity documentation is available. ROS 2 and robot build, launch, configuration, and end-to-end deployment instructions will accompany the remaining components. |
-| Remaining Unity authoring utilities | **Partially available; to be completed** | The status of additional operations described in the paper is documented in the [Unity guide](Unity-Quest3/README.md#scope-and-pending-utilities). |
+Documentation covers the Quest 3 application and Unity project. End-to-end robot-system deployment instructions are outside the release scope. The features and limitations of the included authoring interface are described in the [Unity guide](Unity-Quest3/README.md#scope-and-limitations).
 
-The published [user-study materials](Supplement/) contain the consent form, protocol, and questionnaire instruments. Participant-level recordings, raw questionnaire responses, and analysis scripts are not included in the current release. This README will be updated with the locations and download links of newly published components.
+The published [user-study materials](Supplement/) contain the consent form, protocol, and questionnaire instruments. Participant-level recordings, raw questionnaire responses, and analysis scripts are not included.
 
 ## Citation
 

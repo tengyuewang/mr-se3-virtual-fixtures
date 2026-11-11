@@ -32,7 +32,7 @@ On Windows, compute the downloaded file's checksum with:
 Get-FileHash .\mr-se3-virtual-fixtures.apk -Algorithm SHA256
 ```
 
-This is the author-provided prebuilt APK. Its package metadata and file checksum have been inspected; a reproducible match to the repository source has not been independently established. The release does not include the pending ROS 2 workspace or robot controller.
+This is the author-provided prebuilt APK. Its package metadata and file checksum have been inspected; a reproducible match to the repository source has not been independently established. Project-specific ROS 2 packages and the robot controller are outside the [public release scope](../../README.md#release-scope).
 
 ### Build from source
 
@@ -67,9 +67,9 @@ Launch **MR SE3 Path Interface** on the headset. On first launch, grant the requ
 
 ## 3. ROS-TCP connection
 
-Run a ROS-TCP endpoint on the ROS 2 computer and expose TCP port 10000 to the headset network. Edit `Assets/Resources/ROSConnectionPrefab.prefab` and set `m_RosIPAddress` to that computer's reachable IPv4 address. The checked-in `192.168.0.2` value is an example only.
+For integration with independently supplied robot software, run a compatible ROS-TCP endpoint on the ROS 2 computer and expose TCP port 10000 to the headset network. Edit `Assets/Resources/ROSConnectionPrefab.prefab` and set `m_RosIPAddress` to that computer's reachable IPv4 address. The checked-in `192.168.0.2` value is an example only.
 
-Editing the prefab changes a subsequent source build, not the already downloaded APK. For the prebuilt application, the ROS endpoint must match the network configuration built into the application. The corresponding project-specific ROS 2 packages and launch instructions will be added in a later release.
+Editing the prefab changes a subsequent source build, not the already downloaded APK. For the prebuilt application, the ROS endpoint must match the network configuration built into the application. This guide covers Unity-side configuration; project-specific ROS 2 packages and end-to-end robot deployment instructions are outside the repository's public scope.
 
 The Unity and robot-side packages must use compatible `flexiv_msgs` definitions. If the ROS definitions change, regenerate `Assets/RosMessages` with the ROS-TCP Connector message-generation tool.
 
@@ -90,6 +90,6 @@ The calibration control in the hand menu enables `TrackableManager` while calibr
 - Run all Edit Mode tests in Unity Test Runner.
 - Confirm the ROS host and port.
 - Confirm `/robot_states` is received and joint ordering matches the visual model.
-- Confirm `/waypoint` positions are expressed in metres and orientations are normalized.
+- Confirm the configured path topic (`/waypoint2` in the sample scene; `/waypoint` is the script default) uses positions in metres and normalized orientations.
 - Test the entire path in simulation or without motor power.
 - Verify workspace constraints, collision checking, speed limits, and emergency stop outside Unity.
