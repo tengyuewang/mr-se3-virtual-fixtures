@@ -15,7 +15,7 @@ For direct headset installation, use the [prebuilt APK](https://github.com/tengy
 - QR-based alignment and visualization of the virtual robot and authored path.
 - ROS-TCP publication of fitted paths and reception of robot states.
 
-The main scene is [Assets/Scenes/SampleScene.unity](Assets/Scenes/SampleScene.unity). The public release covers the headset-side interface; robot-side VF enforcement, impedance control, and project-specific ROS 2 packages are outside its scope. See the [repository release scope](../README.md#release-scope).
+The main scene is [Assets/Scenes/SampleScene.unity](Assets/Scenes/SampleScene.unity).
 
 ## Setup and use
 
@@ -133,7 +133,7 @@ The current Laplacian formulation operates in logarithmic coordinates relative t
 
 Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the public scripts. Additional authoring utilities are outside the planned public release.
 
-The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). See the [root README](../README.md#release-scope) for the scope of the published materials.
+The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). See the [root README](../README.md) for the repository contents.
 
 ## Safety
 

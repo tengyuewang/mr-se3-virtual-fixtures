@@ -32,7 +32,7 @@ On Windows, compute the downloaded file's checksum with:
 Get-FileHash .\mr-se3-virtual-fixtures.apk -Algorithm SHA256
 ```
 
-This is the author-provided prebuilt APK. Its package metadata and file checksum have been inspected; a reproducible match to the repository source has not been independently established. Project-specific ROS 2 packages and the robot controller are outside the [public release scope](../../README.md#release-scope).
+The prebuilt APK's package metadata and file checksum have been inspected; a reproducible match to the repository source has not been independently established. Integration with physical hardware requires separately supplied ROS 2 and robot-control software.
 
 ### Build from source
 
