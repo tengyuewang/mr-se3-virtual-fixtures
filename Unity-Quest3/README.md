@@ -4,7 +4,7 @@
 
 This folder contains the Meta Quest 3 MR interface for the paper *Toward In-Situ SE(3) Virtual Fixture Generation and Editing: A Mixed Reality-Driven Approach*. It provides the headset-side implementation for specifying, visualizing, editing, and transmitting six-degree-of-freedom robot paths.
 
-**Open this `Unity-Quest3` folder in Unity Hub.** Unless stated otherwise, all asset paths and local build commands below are relative to this folder.
+For direct headset installation, use the [prebuilt APK](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/download/quest3-apk-2026-11-11/mr-se3-virtual-fixtures.apk). To work with the source, **open this `Unity-Quest3` folder in Unity Hub**. Unless stated otherwise, asset paths and local source-build commands below are relative to this folder.
 
 ## Included features
 
@@ -18,6 +18,22 @@ This folder contains the Meta Quest 3 MR interface for the paper *Toward In-Situ
 The main scene is [Assets/Scenes/SampleScene.unity](Assets/Scenes/SampleScene.unity). Robot-side VF enforcement, impedance control, and the matching ROS 2 packages are forthcoming components; see the [repository release roadmap](../README.md#release-roadmap).
 
 ## Setup and use
+
+### Install the prebuilt APK
+
+Version **1.1.0**, built November 11, 2026, is available for Meta Quest 3 (ARM64):
+
+1. Download [mr-se3-virtual-fixtures.apk](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/download/quest3-apk-2026-11-11/mr-se3-virtual-fixtures.apk).
+2. Enable Developer Mode on the Quest 3, connect it by USB, and accept the USB debugging prompt. Ensure Android SDK Platform-Tools (`adb`) is available on your computer.
+3. From the directory containing the downloaded APK, run:
+
+   ```bash
+   adb install -r mr-se3-virtual-fixtures.apk
+   ```
+
+4. Launch **MR SE3 Path Interface** on the headset and grant the requested permissions.
+
+Unity Editor is not required to install the prebuilt application. See the [installation and checksum details](Documentation/SETUP.md#prebuilt-apk) and [release notes](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/tag/quest3-apk-2026-11-11). The APK contains the headset application, not the forthcoming ROS 2 packages or robot controller.
 
 ### Project configuration
 
@@ -54,7 +70,7 @@ Dependency versions are recorded in [Packages/manifest.json](Packages/manifest.j
    adb install -r Build/MR-SE3-Path-Interface.apk
    ```
 
-A prebuilt APK will be uploaded later. Building the Unity application does not install or start the pending ROS 2 and robot-controller components. See [Documentation/SETUP.md](Documentation/SETUP.md) for the current device and deployment instructions.
+Alternatively, install the [published prebuilt APK](#install-the-prebuilt-apk). Building the Unity application does not install or start the pending ROS 2 and robot-controller components. See [Documentation/SETUP.md](Documentation/SETUP.md) for device and deployment instructions.
 
 ### ROS connection and coordinate frames
 
@@ -66,6 +82,8 @@ The current Unity code publishes fitted paths and receives robot states through 
 | ROS to Unity | `/robot_states` | `flexiv_msgs/RobotStates` |
 
 Set the ROS host in [Assets/Resources/ROSConnectionPrefab.prefab](Assets/Resources/ROSConnectionPrefab.prefab). Its checked-in address, `192.168.0.2`, is an example and must be replaced with the reachable address of your ROS computer. The headset and ROS host must be able to communicate over TCP port `10000`.
+
+Changing this prefab affects a subsequent source build; it does not change an already downloaded APK. The prebuilt application's network configuration must match your ROS endpoint.
 
 Fitted poses are transformed from the Unity world frame to the robot-base frame and then converted to ROS FLU coordinates before publication. The default published frame ID is `rizon_base`. [Assets/RosMessages/Flexiv/msg](Assets/RosMessages/Flexiv/msg) contains the generated Unity C# message classes, not a standalone ROS 2 package. The matching ROS 2 message definitions, communication packages, and launch instructions will be provided with the ROS 2 release.
 
@@ -113,7 +131,7 @@ The current Laplacian formulation operates in logarithmic coordinates relative t
 
 Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the current public scripts and will be added with their usage instructions in a subsequent update.
 
-A prebuilt Quest 3 APK is also planned. The complete release status, additional platform support, robot software, and user-study materials are tracked in the [root README](../README.md#release-roadmap).
+The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). Additional platform support, robot software, and user-study materials remain tracked in the [root README](../README.md#release-roadmap).
 
 ## Safety
 
