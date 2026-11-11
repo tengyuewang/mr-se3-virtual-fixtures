@@ -131,7 +131,7 @@ The current Laplacian formulation operates in logarithmic coordinates relative t
 
 Path reset and Inspector-based parameter adjustment are included. Dedicated pose-insertion/removal controls described in Section III-B of the paper are not exposed in the current public scripts and will be added with their usage instructions in a subsequent update.
 
-The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). Additional platform support, robot software, and user-study materials remain tracked in the [root README](../README.md#release-roadmap).
+The prebuilt Quest 3 APK is [available now](#install-the-prebuilt-apk). The user-study consent form, protocol, and questionnaires are available in [Supplement](../Supplement/). Additional platform support, robot software, and complete system documentation remain tracked in the [root README](../README.md#release-roadmap).
 
 ## Safety
 

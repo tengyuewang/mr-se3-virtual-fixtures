@@ -6,7 +6,7 @@
 
 This is the public project repository accompanying our work on mixed reality (MR)-driven generation and editing of full SE(3) virtual fixtures for physical human-robot interaction. The complete system combines MR-based motion specification, SE(3) path generation, interactive Laplacian editing, and robot-side virtual fixture enforcement through task-space impedance control.
 
-**The repository is being released incrementally.** The Meta Quest 3 Unity project, its documentation, and a prebuilt Quest 3 APK are available now. Additional implementations and supporting study materials will be uploaded in subsequent updates.
+**The repository is being released incrementally.** The Meta Quest 3 Unity project, its documentation, a prebuilt Quest 3 APK, and the user-study consent form, protocol, and questionnaires are available now. Additional implementations and complete system documentation will be uploaded in subsequent updates.
 
 **Prebuilt Quest 3 APK:** [Download version 1.1.0](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/download/quest3-apk-2026-11-11/mr-se3-virtual-fixtures.apk) | [Release notes and SHA-256 checksum](https://github.com/tengyuewang/mr-se3-virtual-fixtures/releases/tag/quest3-apk-2026-11-11)
 
@@ -16,6 +16,10 @@ This is the public project repository accompanying our work on mixed reality (MR
 mr-se3-virtual-fixtures/
 |-- README.md                       # Repository overview and release status
 |-- LICENSE                         # License for original project code
+|-- Supplement/                     # User-study materials (PDF)
+|   |-- NASA-TLX_and_SUS_Questionnaire.pdf
+|   |-- Participant_Information_and_Consent.pdf
+|   `-- Participant_Study_Protocol.pdf
 `-- Unity-Quest3/                   # Meta Quest 3 Unity project
     |-- README.md                   # Unity setup, usage, and code guide
     |-- Assets/                     # C# scripts, scene, prefabs, and resources
@@ -36,6 +40,9 @@ Only currently available content is shown above. Future components will be linke
 | Unity project guide | Required versions, opening the project, APK build steps, ROS connection settings, parameters, and source-code guide. | [Unity README](Unity-Quest3/README.md) |
 | Setup and architecture documentation | Current Quest deployment instructions, calibration options, coordinate frames, and Unity runtime data flow. | [Setup](Unity-Quest3/Documentation/SETUP.md) / [Architecture](Unity-Quest3/Documentation/ARCHITECTURE.md) |
 | Validation utilities | Focused Edit Mode tests and Unity menu commands for project validation and APK building. | [Tests](Unity-Quest3/Assets/Tests/Editor/) / [Release tools](Unity-Quest3/Assets/Editor/ReleaseAudit.cs) |
+| Participant information and consent | Participant-facing study information and a blank informed consent form. | [Consent PDF](Supplement/Participant_Information_and_Consent.pdf) |
+| Participant study protocol | Equipment, study conditions, familiarization, path-authoring, task execution, and questionnaire procedures. | [Protocol PDF](Supplement/Participant_Study_Protocol.pdf) |
+| Study questionnaires | Blank NASA-TLX and System Usability Scale (SUS) forms, with open-ended feedback prompts. | [Questionnaire PDF](Supplement/NASA-TLX_and_SUS_Questionnaire.pdf) |
 
 To install the interface directly on a headset, follow the [prebuilt APK instructions](Unity-Quest3/Documentation/SETUP.md#prebuilt-apk); Unity Editor is not required. To work with the source, follow the [Unity project README](Unity-Quest3/README.md) and **select `Unity-Quest3/` in Unity Hub**, rather than the repository root.
 
@@ -51,12 +58,9 @@ The following materials will be added in subsequent updates. Items marked **To b
 | Robot-side C++ implementation | **To be added** | Path deployment, virtual fixture enforcement, task-space impedance control, and the software interface for the Flexiv Rizon 4 used in the study. |
 | ROS 2 packages | **To be added** | Packages and message definitions for exchanging generated paths, control parameters, and robot states between the Unity applications and robot-side modules. |
 | Complete system documentation | **Partially available; to be extended** | Unity documentation is available. ROS 2 and robot build, launch, configuration, and end-to-end deployment instructions will accompany the remaining components. |
-| Informed consent form | **To be added** | The participant-facing consent form used in the user study. |
-| Participant study protocol | **To be added** | Familiarization, path-authoring and task-execution procedures, and condition-ordering instructions. |
-| Study questionnaires | **To be added** | NASA-TLX, the System Usability Scale (SUS), and the open-ended feedback prompts administered to participants. |
 | Remaining Unity authoring utilities | **Partially available; to be completed** | The status of additional operations described in the paper is documented in the [Unity guide](Unity-Quest3/README.md#scope-and-pending-utilities). |
 
-The planned user-study materials are the forms, protocol, and questionnaire instruments. Participant-level recordings, raw questionnaire responses, and analysis scripts are not included in the current release. This README will be updated with the locations and download links of newly published components.
+The published [user-study materials](Supplement/) contain the consent form, protocol, and questionnaire instruments. Participant-level recordings, raw questionnaire responses, and analysis scripts are not included in the current release. This README will be updated with the locations and download links of newly published components.
 
 ## Citation
 
